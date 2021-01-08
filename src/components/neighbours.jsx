@@ -1,4 +1,5 @@
 import React from 'react';
+import './neighbours.styles.css';
 
 const Neighbours = ({neighbours}) => {
     return(
@@ -7,8 +8,9 @@ const Neighbours = ({neighbours}) => {
             <div> 
                 <img src={neighbour.flag}></img>
                 <p>{neighbour.name}</p>
+                <p>{neighbour.region}</p>
             </div>
-            )};           
+            )}           
                       
         </div>  
     )

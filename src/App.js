@@ -16,22 +16,10 @@ function App() {
       try {
       const response = await fetch(`https://restcountries.eu/rest/v2/name/${item}`);
       const data = await response.json();
-      const info = data[0];
-      console.log(info);
-      
-          
-      setCountry({
-        flag: info.flag,
-        name: info.name,
-        capital: info.capital,
-        region: info.region,
-        population: info.population,
-        languages: info.languages,
-        currencies: info.currencies,
-        topLevelDomain: info.topLevelDomain
-      });
-
-      setBorders(info.borders);
+      const country = data[0];
+            
+      setCountry({...country});      
+      setBorders(country.borders);
 
       } catch(err) {
           alert(`Please insert a valid country name! ${err.message}`);
@@ -47,13 +35,8 @@ function App() {
         await borders.map(async (neighbour) => {
         const res = await fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
         const border = await res.json();
-        
-        
-         
-        setNeighbours([...neighbours, border]);
-        console.log(neighbours);
-        console.log(border);
-      });
+        setNeighbours((previousNeigbours) => [...previousNeigbours, border]);
+    });
   }  
 
   

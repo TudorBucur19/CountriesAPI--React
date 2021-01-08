@@ -1,0 +1,39 @@
+/* .neighbour::before {
+    content: 'Neighbour country';
+    width: 100%;
+    position: absolute;
+    top: -4rem;
+  
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #888;
+  }
+  
+  .neighbour {
+    transform: scale(0.8) translateY(1rem);
+    margin-left: 0;
+  } */
+
+  .neighbour {
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    background-color:rgb(219, 217, 217);
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 25px;
+    cursor: pointer;
+    text-align: center;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out;
+  }
+
+  .neighbour img{
+      width: 100%;
+      height: 80%;
+      align-self: center;
+  }
