@@ -15,7 +15,6 @@ const Country = ({country, neighbours}) => {
                 <p className="country__row"><span>💰</span>{currencies.map(el => " " + el.name)}</p>
                 <p><span>&#128225; </span>{topLevelDomain}</p>
               </div>
-              <button onClick={neighbours}>Show neighbours</button>
             </article>
         </div>
 

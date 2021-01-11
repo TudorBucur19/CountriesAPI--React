@@ -1,14 +1,14 @@
 import './App.css';
 import React, { useState } from 'react';
 import Country from './components/country';
-import Neighbours from './components/neighbours';
+
 
 
 function App() {
 
   const [country, setCountry] = useState();
   const [search, setSearch] = useState("");
-  const [borders, setBorders] = useState();
+  const [borders, setBorders] = useState([]);
   const [neighbours, setNeighbours] = useState([]);
 
  
@@ -31,7 +31,10 @@ function App() {
     }
 
     
-    async function getNeighbours() { 
+    async function getNeighbours() {
+      if(country.borders.length === 0){
+        alert(`${country.name} has no neighbours!`)
+      } 
         await borders.map(async (neighbour) => {
         const res = await fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
         const border = await res.json();
@@ -50,11 +53,24 @@ function App() {
         />}    
       </div>
 
-      <div className="neighbour">
+      {borders.length !== 0 && 
+      <div>
+        <div className="neighbour">
+          {neighbours.map(neighbour => 
+            <Country country={neighbour}/>)}
+        </div>
+        <div>
+          <button onClick={() => getNeighbours()} className="neighboursBtn">
+            Show {country.name}'s neighbours 
+          </button>
+        </div>
+      </div>}
+
+      {/* <div className="neighbour">
         {neighbours && <Neighbours 
         neighbours={neighbours}
         />}
-      </div>      
+      </div>       */}
       
       <h2>Which country do you want to know about?</h2>
       <input className="search" type="text" value={search} onChange={handleChange}></input>

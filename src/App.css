@@ -21,6 +21,17 @@
   cursor: pointer;
 }
 
+.neighboursBtn {
+  margin-top: 1%;
+  border: none;
+  font-size: 1rem;
+  padding: 0.5em 1.5rem;
+  border-radius: 0.7rem;
+  color: white;
+  background-color: orangered;
+  cursor: pointer;
+}
+
 .search {
   padding: 1rem 1rem;
   font-size: 1.4rem;
@@ -36,4 +47,26 @@
   margin: 0 3rem;
   
 } */
+
+.neighbour {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  background-color:rgb(219, 217, 217);
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 25px;
+  cursor: pointer;
+  text-align: center;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+}
+
+.neighbour img{
+    width: 100%;
+    height: 80%;
+    align-self: center;
+}
 
