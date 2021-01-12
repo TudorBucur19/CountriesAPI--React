@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Country = ({country, neighbours}) => {
+const Country = ({country}) => {
   const {flag, name, capital, region, population, languages, currencies, topLevelDomain} = country;
     return(
         <div>

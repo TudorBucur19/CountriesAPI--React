@@ -10,6 +10,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [borders, setBorders] = useState([]);
   const [neighbours, setNeighbours] = useState([]);
+  const [isNeighbour, setIsNeighbour] = useState(false);
 
  
     async function getCountry(item) {
@@ -20,6 +21,7 @@ function App() {
             
       setCountry({...country});      
       setBorders(country.borders);
+      setSearch('');
 
       } catch(err) {
           alert(`Please insert a valid country name! ${err.message}`);
@@ -28,6 +30,12 @@ function App() {
         
     const handleChange = (event) => {
       setSearch(event.target.value);
+    };
+
+    const handleKeyPress = (event) => {
+      if(event.charCode === 13){
+        getCountry(search);
+      }
     }
 
     
@@ -35,46 +43,55 @@ function App() {
       if(country.borders.length === 0){
         alert(`${country.name} has no neighbours!`)
       } 
-        await borders.map(async (neighbour) => {
+        borders.map(async (neighbour) => {
         const res = await fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
         const border = await res.json();
         setNeighbours((previousNeigbours) => [...previousNeigbours, border]);
-    });
-  }  
+        setIsNeighbour(true);
+        });
+    }  
 
   
   return (
     <div className="container">
       
       <div className="country">
-        {country&&<Country  
+        {country && <Country  
         country={{...country}}
-        neighbours = {() => getNeighbours()}
         />}    
       </div>
+      
 
-      {borders.length !== 0 && 
+      {borders.length !== 0 &&
       <div>
         <div className="neighbour">
           {neighbours.map(neighbour => 
             <Country country={neighbour}/>)}
         </div>
         <div>
+          {!isNeighbour &&
           <button onClick={() => getNeighbours()} className="neighboursBtn">
             Show {country.name}'s neighbours 
           </button>
-        </div>
+          }
+      </div>        
       </div>}
-
-      {/* <div className="neighbour">
-        {neighbours && <Neighbours 
-        neighbours={neighbours}
-        />}
-      </div>       */}
-      
+          
       <h2>Which country do you want to know about?</h2>
-      <input className="search" type="text" value={search} onChange={handleChange}></input>
-      <button className="searchBtn" onClick={()=> getCountry(search)}>Search</button>
+      <input 
+      className="search" 
+      type="text" 
+      value={search} 
+      onChange={handleChange} 
+      onKeyPress={handleKeyPress}
+      ></input>
+      
+      <button 
+      className="searchBtn" 
+      onClick={()=> getCountry(search)}
+      >
+      Search
+      </button>
     
     </div>
   );
