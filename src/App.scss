@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.searchBtn {
+  border: none;
+  font-size: 1.5rem;
+  padding: 1rem 3rem;
+  border-radius: 0.7rem;
+  color: white;
+  background-color: orangered;
+  cursor: pointer;
+}
+
+.neighboursBtn {
+  margin-top: 1%;
+  border: none;
+  font-size: 1rem;
+  padding: 0.5em 1.5rem;
+  border-radius: 0.7rem;
+  color: white;
+  background-color: orangered;
+  cursor: pointer;
+}
+
+.search {
+  padding: 1rem 1rem;
+  font-size: 1.4rem;
+  margin: 20px;
+}
+
+.neighbour {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;  
+  border-radius: 5px;
+  padding: 10% 0;
+  margin-bottom: 2%;  
+  text-align: center; 
+}
+
+

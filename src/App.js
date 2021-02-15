@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import React, { useState } from 'react';
 import Country from './components/country';
 
@@ -55,7 +55,7 @@ function App() {
   return (
     <div className="container">
       
-      <div className="country">
+      <div>
         {country && <Country  
         country={{...country}}
         />}    
